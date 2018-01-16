@@ -2,6 +2,9 @@
 #define __FOAS_PLUGIN_PLUGINTEMPLATE_H__
 
 
+#include <dlfcn.h>
+
+
 namespace foas {
   namespace plugin {
     class PluginTemplate {

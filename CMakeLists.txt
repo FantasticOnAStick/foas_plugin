@@ -21,4 +21,5 @@ add_library(${PROJECT_NAME}
   ${LIB_SRC})
 
 target_link_libraries(${PROJECT_NAME}
-  foas_common)
+  foas_common
+  dl)
