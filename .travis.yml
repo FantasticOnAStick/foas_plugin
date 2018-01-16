@@ -6,6 +6,7 @@ compiler:
  - gcc
 
 before_install:
+ - git clone http://github.com/FantasticOnAStick/foas_common.git
  - git clone http://github.com/FantasticOnAStick/foas_plugin.git
 
 script:
