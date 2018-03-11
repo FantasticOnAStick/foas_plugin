@@ -18,7 +18,7 @@ namespace foas {
       std::string mPath;
 
       void* mLibHandle;
-      std::function<std::shared_ptr<Plugin>()> mCreateInstanceFunction;
+      std::function<std::shared_ptr<Plugin>(std::shared_ptr<message::Bus>)> mCreateInstanceFunction;
 
       std::string mName;
       
@@ -31,7 +31,7 @@ namespace foas {
 
       std::string GetName();
 
-      std::shared_ptr<Plugin> CreatePlugin();
+      std::shared_ptr<Plugin> CreatePlugin(std::shared_ptr<message::Bus> bus);
     };
   }
 }

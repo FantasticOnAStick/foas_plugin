@@ -21,11 +21,11 @@ namespace foas {
 	      mName = getName();
 
 	      if(mName != "") {
-		std::shared_ptr<Plugin> (*createInstance)() = (std::shared_ptr<Plugin>(*)())dlsym(libHandle, "CreateInstance");
+		std::shared_ptr<Plugin> (*createInstance)(std::shared_ptr<message::Bus>) = (std::shared_ptr<Plugin>(*)(std::shared_ptr<message::Bus>))dlsym(libHandle, "CreateInstance");
 		
 		if(createInstance) {
-		  mCreateInstanceFunction = [createInstance]() {
-		    return createInstance();
+		  mCreateInstanceFunction = [createInstance](std::shared_ptr<message::Bus> bus) {
+		    return createInstance(bus);
 		  };
 		  
 		  mLibHandle = libHandle;
@@ -55,8 +55,8 @@ namespace foas {
       return mName;
     }
     
-    std::shared_ptr<Plugin> PluginTemplate::CreatePlugin() {
-      return mCreateInstanceFunction();
+    std::shared_ptr<Plugin> PluginTemplate::CreatePlugin(std::shared_ptr<message::Bus> bus) {
+      return mCreateInstanceFunction(bus);
     }
   }
 }

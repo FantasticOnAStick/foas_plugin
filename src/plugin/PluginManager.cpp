@@ -28,11 +28,11 @@ namespace foas {
       return task;
     }
     
-    std::shared_ptr<PluginInstance> PluginManager::InstantiateTemplate(std::string name) {
+    std::shared_ptr<PluginInstance> PluginManager::InstantiateTemplate(std::string name, std::shared_ptr<message::Bus> bus) {
       std::shared_ptr<PluginInstance> instance = nullptr;
       
       if(mLoadedTemplates.find(name) != mLoadedTemplates.end()) {
-	instance = std::make_shared<PluginInstance>(mLoadedTemplates[name]);
+	instance = std::make_shared<PluginInstance>(mLoadedTemplates[name], bus);
 	
 	// TODO: Do more initialization here.
       }

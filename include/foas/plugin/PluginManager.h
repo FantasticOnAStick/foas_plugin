@@ -10,6 +10,7 @@
 
 #include <foas/plugin/PluginTemplate.h>
 #include <foas/plugin/PluginInstance.h>
+#include <foas/message/Bus.h>
 
 
 namespace foas {
@@ -23,7 +24,7 @@ namespace foas {
       ~PluginManager();
 
       std::shared_ptr<common::Task> LoadTemplate(std::string path);
-      std::shared_ptr<PluginInstance> InstantiateTemplate(std::string name);
+      std::shared_ptr<PluginInstance> InstantiateTemplate(std::string name, std::shared_ptr<message::Bus> bus);
     };
   }
 }

@@ -3,7 +3,7 @@
 
 namespace foas {
   namespace plugin {
-    Plugin::Plugin() {
+    Plugin::Plugin(std::shared_ptr<message::Bus> bus) : mBus(bus) {
     }
 
     Plugin::~Plugin() {
