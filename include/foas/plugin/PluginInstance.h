@@ -9,10 +9,11 @@ namespace foas {
   namespace plugin {
     class PluginInstance {
     private:
-      PluginTemplate mTemplate;
+      std::shared_ptr<PluginTemplate> mTemplate;
+      std::shared_ptr<Plugin> mPlugin;
       
     public:
-      PluginInstance(PluginTemplate pluginTemplate);
+      PluginInstance(std::shared_ptr<PluginTemplate> pluginTemplate);
       ~PluginInstance();
     };
   }

@@ -3,9 +3,10 @@
 
 namespace foas {
   namespace plugin {
-    PluginInstance::PluginInstance(PluginTemplate pluginTemplate) : mTemplate(pluginTemplate) {
+    PluginInstance::PluginInstance(std::shared_ptr<PluginTemplate> pluginTemplate) : mTemplate(pluginTemplate) {
+      mPlugin = pluginTemplate->CreatePlugin();
     }
-
+    
     PluginInstance::~PluginInstance() {
     }
   }

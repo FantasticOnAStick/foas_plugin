@@ -2,6 +2,7 @@
 #define __FOAS_PLUGIN_PLUGINMANAGER_H__
 
 
+#include <iostream>
 #include <map>
 #include <memory>
 
@@ -15,14 +16,14 @@ namespace foas {
   namespace plugin {
     class PluginManager {
     private:
-      std::map<std::string, PluginTemplate> mLoadedTemplates;
+      std::map<std::string, std::shared_ptr<PluginTemplate>> mLoadedTemplates;
       
     public:
       PluginManager();
       ~PluginManager();
 
       std::shared_ptr<common::Task> LoadTemplate(std::string path);
-      PluginInstance InstantiateTemplate(std::string name);
+      std::shared_ptr<PluginInstance> InstantiateTemplate(std::string name);
     };
   }
 }

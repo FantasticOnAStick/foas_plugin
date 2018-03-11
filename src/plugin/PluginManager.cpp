@@ -11,17 +11,31 @@ namespace foas {
 
     std::shared_ptr<common::Task> PluginManager::LoadTemplate(std::string path) {
       std::shared_ptr<common::Task> task = std::make_shared<common::Task>([this, path] {
-	  // ...
+	  std::cout << path << std::endl;
+	  std::shared_ptr<PluginTemplate> pluginTemplate = std::make_shared<PluginTemplate>(path);
+	  
+	  if(pluginTemplate->Load()) {
+	    std::string name = pluginTemplate->GetName();
+
+	    if(mLoadedTemplates.find(name) == mLoadedTemplates.end()) {
+	      mLoadedTemplates[name] = pluginTemplate;
+	    } else {
+	      pluginTemplate->Unload();
+	    }
+	  }
 	});
       
       return task;
     }
     
-    PluginInstance PluginManager::InstantiateTemplate(std::string name) {
-      PluginTemplate temp;
-      PluginInstance instance(temp);
+    std::shared_ptr<PluginInstance> PluginManager::InstantiateTemplate(std::string name) {
+      std::shared_ptr<PluginInstance> instance = nullptr;
       
-      // ...
+      if(mLoadedTemplates.find(name) != mLoadedTemplates.end()) {
+	instance = std::make_shared<PluginInstance>(mLoadedTemplates[name]);
+	
+	// TODO: Do more initialization here.
+      }
       
       return instance;
     }

@@ -5,6 +5,7 @@
 namespace foas {
   namespace plugin {
     class Plugin {
+    private:
     public:
       Plugin();
       ~Plugin();
