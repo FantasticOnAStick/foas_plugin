@@ -16,6 +16,9 @@ namespace foas {
     public:
       PluginInstance(std::shared_ptr<PluginTemplate> pluginTemplate, std::shared_ptr<message::Bus> bus);
       ~PluginInstance();
+
+      void Initialize();
+      void Deinitialize();
     };
   }
 }

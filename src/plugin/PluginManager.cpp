@@ -33,8 +33,8 @@ namespace foas {
       
       if(mLoadedTemplates.find(name) != mLoadedTemplates.end()) {
 	instance = std::make_shared<PluginInstance>(mLoadedTemplates[name], bus);
-	
-	// TODO: Do more initialization here.
+
+	instance->Initialize();
       }
       
       return instance;

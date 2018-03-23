@@ -14,6 +14,9 @@ namespace foas {
     public:
       Plugin(std::shared_ptr<message::Bus> bus);
       ~Plugin();
+
+      virtual bool Initialize() = 0;
+      virtual void Deinitialize() = 0;
     };
   }
 }

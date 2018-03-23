@@ -9,5 +9,13 @@ namespace foas {
     
     PluginInstance::~PluginInstance() {
     }
+    
+    void PluginInstance::Initialize() {
+      mPlugin->Initialize();
+    }
+    
+    void PluginInstance::Deinitialize() {
+      mPlugin->Deinitialize();
+    }
   }
 }
