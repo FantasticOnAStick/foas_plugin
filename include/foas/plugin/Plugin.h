@@ -8,7 +8,7 @@
 namespace foas {
   namespace plugin {
     class Plugin {
-    private:
+    protected:
       std::shared_ptr<message::Bus> mBus;
       
     public:
